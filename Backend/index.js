@@ -12,6 +12,14 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser()); 
 
+const allowedOrigins = ["https://jayaram-dev-004.github.io"];
+
+app.use(cors({
+  origin: allowedOrigins, // Specify allowed origin
+  methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed HTTP methods
+  credentials: true // Allow credentials (cookies, authorization headers)
+}));
+
 
 app.use("/", routes)
 const PORT = process.env.PORT;
